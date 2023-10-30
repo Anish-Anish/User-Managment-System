@@ -18,9 +18,9 @@
 	    private final static String query = "select name,email,mobile,dob,city,gender from user where id=?";
 	    @Override
 	    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-	        //get PrintWriter
+	       
 	        PrintWriter pw = res.getWriter();
-	        //set content type
+	      
 	        res.setContentType("text/html");
 
 	        //get the id
