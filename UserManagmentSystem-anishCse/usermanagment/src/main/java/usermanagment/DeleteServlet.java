@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -49,6 +48,7 @@ public class DeleteServlet extends HttpServlet {
         }catch(SQLException se) {
             pw.println("<h2 class='bg-danger text-light text-center'>"+se.getMessage()+"</h2>");
             se.printStackTrace();
+            //log information about an exception
         }catch(Exception e) {
             e.printStackTrace();
         }
