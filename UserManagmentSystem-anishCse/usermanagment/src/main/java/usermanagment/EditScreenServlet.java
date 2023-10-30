@@ -23,10 +23,9 @@
 	      
 	        res.setContentType("text/html");
 
-	        //get the id
-	        //get the values
+	       
 	        int id = Integer.parseInt(req.getParameter("id"));
-	        //link the bootstrap
+	   
 	        pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
 	        //load the JDBC driver
 	        try {
@@ -34,7 +33,7 @@
 	        }catch(Exception e) {
 	            e.printStackTrace();
 	        }
-	        //generate the connection
+	       
 	        try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'");
 	                PreparedStatement ps = con.prepareStatement(query);){
 	            //set value 
