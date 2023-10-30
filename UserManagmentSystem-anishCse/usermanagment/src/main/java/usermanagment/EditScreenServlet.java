@@ -36,7 +36,7 @@
 	       
 	        try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'");
 	                PreparedStatement ps = con.prepareStatement(query);){
-	            //set value 
+	            
 	            ps.setInt(1, id);
 	            //resultSet
 	            ResultSet rs = ps.executeQuery();
