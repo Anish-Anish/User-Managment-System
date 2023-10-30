@@ -19,13 +19,13 @@ public class RegisterServlet extends HttpServlet {
     private final static String query = "insert into user(name,email,mobile,dob,city,gender) values(?,?,?,?,?,?)";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        //get PrintWriter
+      
         PrintWriter pw = res.getWriter();
-        //set content type
+       
         res.setContentType("text/html");
-        //link the bootstrap
+       
         pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
-        //get the values
+      
         String name = req.getParameter("userName");
         String email = req.getParameter("email");
         String mobile = req.getParameter("mobile");
@@ -38,7 +38,6 @@ public class RegisterServlet extends HttpServlet {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        //generate the connection
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'"
         		+ "");
                 PreparedStatement ps = con.prepareStatement(query);){
