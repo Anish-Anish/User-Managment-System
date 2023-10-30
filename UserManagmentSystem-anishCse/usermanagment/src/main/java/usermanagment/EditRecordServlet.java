@@ -19,13 +19,10 @@ public class EditRecordServlet extends HttpServlet {
     private final static String query = "update user set name=?,email=?,mobile=?,dob=?,city=?,gender=? where id=?";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        //get PrintWriter
+      
         PrintWriter pw = res.getWriter();
-        //set content type
         res.setContentType("text/html");
-        //link the bootstrap
         pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
-        //get the values
         int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String email = req.getParameter("email");
@@ -33,13 +30,11 @@ public class EditRecordServlet extends HttpServlet {
         String dob = req.getParameter("dob");
         String city = req.getParameter("city");
         String gender = req.getParameter("gender");
-        //load the JDBC driver
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }catch(Exception e) {
             e.printStackTrace();
         }
-        //generate the connection
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'");
                 PreparedStatement ps = con.prepareStatement(query);){
             //set the values
@@ -50,7 +45,6 @@ public class EditRecordServlet extends HttpServlet {
             ps.setString(5, city);
             ps.setString(6, gender);
             ps.setInt(7, id);
-            //execute the query
             int count = ps.executeUpdate();
             pw.println("<div class='card' style='margin:auto;width:300px;margin-top:100px'>");
             if(count==1) {
