@@ -19,26 +19,26 @@ public class DeleteServlet extends HttpServlet {
     private final static String query = "delete from user where id = ?";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        //get PrintWriter
+       
         PrintWriter pw = res.getWriter();
-        //set content type
+        
         res.setContentType("text/html");
-        //link the bootstrap
+       
         pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
-        //get the values
+       
         int id = Integer.parseInt(req.getParameter("id"));
-        //load the JDBC driver
+       
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }catch(Exception e) {
             e.printStackTrace();
         }
-        //generate the connection
+        
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'");
                 PreparedStatement ps = con.prepareStatement(query);){
-            //set the values
+         
             ps.setInt(1, id);
-            //execute the query
+           
             int count = ps.executeUpdate();
             pw.println("<div class='card' style='margin:auto;width:300px;margin-top:100px'>");
             if(count==1) {
