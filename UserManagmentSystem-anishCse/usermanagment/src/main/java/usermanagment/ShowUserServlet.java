@@ -20,11 +20,11 @@ public class ShowUserServlet extends HttpServlet {
     private final static String query = "select id,name,email,mobile,dob,city,gender from user";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        //get PrintWriter
+       
         PrintWriter pw = res.getWriter();
-        //set content type
+      
         res.setContentType("text/html");
-        //link the bootstrap
+
         pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
         pw.println("<marquee><h2 class='text-primary'>User Data</h2></marquee>");
         //load the JDBC driver
@@ -33,7 +33,7 @@ public class ShowUserServlet extends HttpServlet {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        //generate the connection
+  
         try(Connection con = DriverManager.getConnection("jdbc:mysql:///usermgmt","root","ani28790'");
                 PreparedStatement ps = con.prepareStatement(query);){
             //resultSet
